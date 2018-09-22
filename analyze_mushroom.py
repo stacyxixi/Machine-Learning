@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
+import time
 # import MidpointNormalize
 
 from sklearn.preprocessing import StandardScaler
@@ -278,13 +279,13 @@ def tune_boost(X, y):
     folds = 5
     cv_s = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=0)
 
-    n_estimators_range = range(1, 402, 50)
+    n_estimators_range = range(1, 302, 50)
     rate_range = [0.001, 0.01, 0.05, 0.1, 0.5, 1.0, 2.0]
     print n_estimators_range
     print rate_range
 
     param_grid = dict(n_estimators=n_estimators_range, learning_rate=rate_range)
-    base = DecisionTreeClassifier(max_depth=3)
+    base = DecisionTreeClassifier(max_depth=1)
     grid = GridSearchCV(AdaBoostClassifier(base_estimator=base), param_grid=param_grid, cv=cv_s, scoring='accuracy', n_jobs=4)
     grid.fit(X, y)
 
@@ -293,13 +294,13 @@ def tune_boost(X, y):
     print("The best parameters are %s with an accuracy of %0.5f" % (grid.best_params_, grid.best_score_))
 
     # Draw heatmap of the cross validation accuracy as a function of gamma and C
-    plot_heatmap(scores, n_estimators_range, rate_range, vmin=0.5, mid=0.85, xlabel='n_estimators',
+    plot_heatmap(scores, n_estimators_range, rate_range, vmin=0.8, mid=0.95, xlabel='n_estimators',
                  ylabel='learning_rate', title='Cross Validation accuracy score with Adaboosting')
 
     # plot learning curve
     optimal_n_estimators = grid.best_params_['n_estimators']
     optimal_lr = grid.best_params_['learning_rate']
-    train_sizes = np.linspace(.1, 1.0, 10)
+    train_sizes = np.linspace(.1, 1.0, 5)
 
     train_sizes, train_scores_lc, cv_scores_lc = learning_curve(
         AdaBoostClassifier(base_estimator=base, n_estimators=optimal_n_estimators, learning_rate=optimal_lr),
@@ -327,8 +328,9 @@ def tune_NN(X, y):
     folds = 5
     cv_s = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=42)
 
-    hidden_layer_sizes_range = [(5,), (50,), (100,), (150,), (200,)]
-    n_hidden_units = [5, 50, 100, 150, 200]
+    hidden_layer_sizes_range = [(1,), (5,),(10,), (20,), (100,)]
+    n_hidden_units = [1, 5, 10, 20, 100]
+    #activation = ['identity', 'logistic', 'tanh', 'relu']
     alpha_range = [1e-5, 1e-4, 1e-3, 1e-2, 1e-1]
     print hidden_layer_sizes_range
     print alpha_range
@@ -342,13 +344,13 @@ def tune_NN(X, y):
     print("The best parameters are %s with an accuracy of %0.5f" % (grid.best_params_, grid.best_score_))
 
     # Draw heatmap of the cross validation accuracy as a function of gamma and C
-    plot_heatmap(scores, n_hidden_units, alpha_range, vmin=0.75, mid=0.86, xlabel='n_hidden_units',
+    plot_heatmap(scores, n_hidden_units, alpha_range, vmin=0.95, mid=0.975, xlabel='n_hidden_units',
                  ylabel='alpha', title='Cross Validation accuracy score with Neuron Network')
 
     # plot learning curve
     optimal_hls = grid.best_params_['hidden_layer_sizes']
     optimal_alpha = grid.best_params_['alpha']
-    train_sizes = np.linspace(.1, 1.0, 10)
+    train_sizes = np.linspace(.1, 1.0, 5)
 
     train_sizes, train_scores_lc, cv_scores_lc = learning_curve(
         MLPClassifier(hidden_layer_sizes=optimal_hls, alpha=optimal_alpha),
@@ -408,14 +410,24 @@ def plot_curve(x_data, train_score_mean, train_score_std, cv_score_mean, cv_scor
 
 def evaluate_classifiers(classifiers, X_train, y_train, X_test, y_test):
     for clf in classifiers:
+
+        start_learn_time = time.clock()
         clf.fit(X_train, y_train)
+        end_learn_time = time.clock()
+        learn_time = end_learn_time - start_learn_time
+
+        start_pred_time = time.clock()
         y_pred = clf.predict(X_test)
+        end_pred_time = time.clock()
+        pred_time = end_pred_time - start_pred_time
+
         score_auc = roc_auc_score(y_test, y_pred)
         score_accuracy = accuracy_score(y_test, y_pred)
         score_f1 = f1_score(y_test, y_pred)
         print "---------------------------------------------------------------------------------------"
         print(clf)
-        print 'TEST: roc_auc_score: %.5f, accuracy: %.5f, F-score: %.5f. ' % (score_auc, score_accuracy, score_f1)
+        print 'TEST: roc_auc_score: %.5f, accuracy: %.5f, F-score: %.5f. '%(score_auc, score_accuracy, score_f1)
+        print 'LEARN_TIME: %s; PREDICT_TIME: %s' % (learn_time, pred_time)
 
 if __name__ == '__main__':
     dataset2 = "agaricus-lepiota.csv"
@@ -433,7 +445,7 @@ if __name__ == '__main__':
     #para_kNN = tune_kNN(X_train, y_train)
     #para_tree = tune_decisionTree(X_train, y_train)
     #para_linear_SVM = tune_SVM_1(X_train, y_train)
-    para_RBF_SVM = tune_SVM_2(X_train, y_train)
+    #para_RBF_SVM = tune_SVM_2(X_train, y_train)
     #para_boost = tune_boost(X_train ,y_train)
     #para_NN = tune_NN(X_train, y_train)
 
@@ -441,12 +453,12 @@ if __name__ == '__main__':
         KNeighborsClassifier(n_neighbors=1),
         DecisionTreeClassifier(max_features='auto', max_depth=16),
         SVC(kernel='linear', C=1),
-        SVC(C=100, gamma=0.01),
-        MLPClassifier(alpha=0.001, hidden_layer_sizes=(100,)),
-        AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=3), learning_rate=0.05, n_estimators=200)
+        SVC(C=10, gamma=0.1),
+        MLPClassifier(alpha=1e-5, hidden_layer_sizes=(5,)),
+        AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=1), learning_rate=0.1, n_estimators=250)
     ]
 
-    #evaluate_classifiers(classifiers, X_train, y_train, X_test, y_test)
+    evaluate_classifiers(classifiers, X_train, y_train, X_test, y_test)
 
 
 
