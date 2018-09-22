@@ -91,7 +91,7 @@ def tune_kNN(X, y):
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
                title='Learning Curve with k-nearest neighbors (k=%d)' % (optimal_k), x_label='number of samples',
-               x_lim=(0, 12000), y_lim=(0.95, 1.05))
+               x_lim=(0, 6000), y_lim=(0.95, 1.05))
 
     return {'n_neighbors': optimal_k}
 
@@ -123,11 +123,11 @@ def tune_SVM_1(X, y):
 
     plot_curve(np.log10(c_range), train_scores_mean, train_scores_std, cv_scores_mean, cv_scores_std,
                title='Validation Curve with SVM (linear)', x_label='value of log10(C)',
-               x_lim=(-4, 4), y_lim=(0.75, 1.05))
+               x_lim=(-4, 4), y_lim=(0.95, 1.05))
 
     # optimal_c = 100.0
 
-    train_sizes = np.linspace(.1, 1.0, 10)
+    train_sizes = np.linspace(.1, 1.0, 5)
 
     train_sizes, train_scores_lc, cv_scores_lc = learning_curve(SVC(kernel='linear'), X, y, cv=folds,
                                                                 n_jobs=4, scoring='accuracy', train_sizes=train_sizes)
@@ -145,7 +145,7 @@ def tune_SVM_1(X, y):
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
                title='Learning Curve with SVM (linear, c=%5.2f)' % (optimal_c), x_label='number of samples',
-               x_lim=(0, 12000), y_lim=(0.75, 1.05))
+               x_lim=(0, 6000), y_lim=(0.95, 1.05))
 
     return {'C': optimal_c}
 
@@ -158,7 +158,7 @@ def tune_SVM_2(X, y):
     # c_range = [0.001,0.01, 0.1, 1, 10, 100, 1000]
     c_range = [1e-1, 1e0, 1e1, 1e2, 1e3, 1e4]
     gamma_range = np.logspace(-5, 1, 7)
-    print gamma_range
+    #print gamma_range
 
     param_grid = dict(gamma=gamma_range, C=c_range)
     grid = GridSearchCV(SVC(), param_grid=param_grid, cv=cv_s, scoring='accuracy', n_jobs=4)
@@ -192,7 +192,7 @@ def tune_SVM_2(X, y):
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
                title='Learning Curve with SVM (RBF, gamma= %.2f, c=%.2f)' % (optimal_gamma, optimal_c),
-               x_label='number of samples', x_lim=(0, 12000), y_lim=(0.75, 1.05))
+               x_label='number of samples', x_lim=(0, 6000), y_lim=(0.95, 1.05))
 
     return {'gamma': optimal_gamma, 'C': optimal_c}
 
@@ -268,7 +268,7 @@ def tune_decisionTree(X, y):
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
                title='Learning Curve with decision tree (max depth = %d)' % (optimal_max_depth),
-               x_label='number of samples', x_lim=(0, 12000), y_lim=(0.95, 1.05))
+               x_label='number of samples', x_lim=(0, 6000), y_lim=(0.95, 1.05))
 
     return {'max_depth': optimal_max_depth}
 
@@ -317,7 +317,7 @@ def tune_boost(X, y):
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
                title='Learning Curve with Adaboosting(%d of estimators, %.3f learning rate)' % (
-                   optimal_n_estimators, optimal_lr), x_label='number of samples', x_lim=(0, 12000), y_lim=(0.75, 1.05))
+                   optimal_n_estimators, optimal_lr), x_label='number of samples', x_lim=(0, 6000), y_lim=(0.75, 1.05))
 
     return {'n_estimators': optimal_n_estimators, 'learning_rate': optimal_lr}
 
@@ -366,7 +366,7 @@ def tune_NN(X, y):
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
                title='Learning Curve with Neural Network(%d hidden units and %.5f alpha)' % (
-                   optimal_hls[0], optimal_alpha), x_label='number of samples', x_lim=(0, 12000), y_lim=(0.75, 1.05))
+                   optimal_hls[0], optimal_alpha), x_label='number of samples', x_lim=(0, 6000), y_lim=(0.75, 1.05))
 
     return {'hidden_layer_sizes': optimal_hls, 'alpha': optimal_alpha}
 
@@ -430,18 +430,18 @@ if __name__ == '__main__':
 
     X_train, X_test, y_train, y_test = train_test_split(X_onehot, y_binary, test_size=0.3, random_state=0)
 
-    para_kNN = tune_kNN(X_train, y_train)
-    para_tree = tune_decisionTree(X_train, y_train)
-    # para_linear_SVM = tune_SVM_1(X_train, y_train)
-    # para_RBF_SVM = tune_SVM_2(X_train, y_train)
-    # para_boost = tune_boost(X_train ,y_train)
-    # para_NN = tune_NN(X_train, y_train)
+    #para_kNN = tune_kNN(X_train, y_train)
+    #para_tree = tune_decisionTree(X_train, y_train)
+    #para_linear_SVM = tune_SVM_1(X_train, y_train)
+    para_RBF_SVM = tune_SVM_2(X_train, y_train)
+    #para_boost = tune_boost(X_train ,y_train)
+    #para_NN = tune_NN(X_train, y_train)
 
     classifiers = [
-        KNeighborsClassifier(n_neighbors=5),
-        SVC(kernel='linear', C=100),
+        KNeighborsClassifier(n_neighbors=1),
+        DecisionTreeClassifier(max_features='auto', max_depth=16),
+        SVC(kernel='linear', C=1),
         SVC(C=100, gamma=0.01),
-        DecisionTreeClassifier(max_features='auto', max_depth=5),
         MLPClassifier(alpha=0.001, hidden_layer_sizes=(100,)),
         AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=3), learning_rate=0.05, n_estimators=200)
     ]

@@ -4,7 +4,10 @@
     <list default="true" id="7f2b9682-a771-4a3e-9def-571477c9f104" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/analyze_mushroom.py" afterPath="$PROJECT_DIR$/analyze_mushroom.py" />
+      <change beforePath="$PROJECT_DIR$/exported figures/mushroom/Learning Curve with decision tree (max depth = 17).png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exported figures/mushroom/Learning Curve with k-nearest neighbors (k=1).png" afterPath="$PROJECT_DIR$/exported figures/mushroom/Learning Curve with k-nearest neighbors (k=1).png" />
       <change beforePath="$PROJECT_DIR$/exported figures/mushroom/Validation Curve with decision tree.png" afterPath="$PROJECT_DIR$/exported figures/mushroom/Validation Curve with decision tree.png" />
+      <change beforePath="$PROJECT_DIR$/exported figures/mushroom/Validation Curve with k-nearest neighbors.png" afterPath="$PROJECT_DIR$/exported figures/mushroom/Validation Curve with k-nearest neighbors.png" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,17 +40,19 @@
       <file leaf-file-name="analyze_mushroom.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analyze_mushroom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="435" column="49" lean-forward="false" selection-start-line="435" selection-start-column="49" selection-end-line="435" selection-end-column="49" />
+            <state relative-caret-position="1260">
+              <caret line="196" column="51" lean-forward="true" selection-start-line="196" selection-start-column="51" selection-end-line="196" selection-end-column="51" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#908#1227#0" expanded="false" />
-                <element signature="e#3854#6239#0" expanded="false" />
-                <element signature="e#6267#9485#0" expanded="false" />
-                <element signature="e#12127#14554#0" expanded="false" />
-                <element signature="e#14579#16961#0" expanded="false" />
-                <element signature="e#17021#17825#0" expanded="false" />
-                <element signature="e#18678#19160#0" expanded="false" />
+                <element signature="e#1427#3825#0" expanded="false" />
+                <element signature="e#3853#6236#0" expanded="false" />
+                <element signature="e#9517#12095#0" expanded="false" />
+                <element signature="e#12123#14549#0" expanded="false" />
+                <element signature="e#14574#16955#0" expanded="false" />
+                <element signature="e#17015#17819#0" expanded="false" />
+                <element signature="e#17923#18593#0" expanded="false" />
+                <element signature="e#18672#19154#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -70,6 +75,7 @@
       <find>F-score</find>
       <find>F score</find>
       <find>scoring=</find>
+      <find>12000</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,8 +129,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,7 +254,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -291,17 +297,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_mushroom.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7480">
+          <caret line="435" column="49" lean-forward="false" selection-start-line="435" selection-start-column="49" selection-end-line="435" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#908#1227#0" expanded="false" />
+            <element signature="e#1427#3825#0" expanded="false" />
+            <element signature="e#3853#6236#0" expanded="false" />
+            <element signature="e#9517#12095#0" expanded="false" />
+            <element signature="e#12123#14549#0" expanded="false" />
+            <element signature="e#14574#16955#0" expanded="false" />
+            <element signature="e#17015#17819#0" expanded="false" />
+            <element signature="e#17923#18593#0" expanded="false" />
+            <element signature="e#18672#19154#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyze_data_pulsar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#1255#3636#0" expanded="false" />
+            <element signature="e#3664#6041#0" expanded="false" />
+            <element signature="e#6069#9282#0" expanded="false" />
+            <element signature="e#9317#11837#0" expanded="false" />
+            <element signature="e#14296#16654#0" expanded="false" />
+            <element signature="e#16715#17521#0" expanded="false" />
+            <element signature="e#17626#18282#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyze_mushroom.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5520">
           <caret line="436" column="4" lean-forward="false" selection-start-line="436" selection-start-column="4" selection-end-line="436" selection-end-column="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#908#1227#0" expanded="false" />
-            <element signature="e#3854#6239#0" expanded="false" />
-            <element signature="e#6267#9485#0" expanded="false" />
-            <element signature="e#12127#14554#0" expanded="false" />
-            <element signature="e#14579#16961#0" expanded="false" />
-            <element signature="e#17021#17825#0" expanded="false" />
-            <element signature="e#18678#19160#0" expanded="false" />
+            <element signature="e#1427#3825#0" expanded="false" />
+            <element signature="e#3853#6236#0" expanded="false" />
+            <element signature="e#9517#12095#0" expanded="false" />
+            <element signature="e#12123#14549#0" expanded="false" />
+            <element signature="e#14574#16955#0" expanded="false" />
+            <element signature="e#17015#17819#0" expanded="false" />
+            <element signature="e#17923#18593#0" expanded="false" />
+            <element signature="e#18672#19154#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -330,12 +374,14 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#908#1227#0" expanded="false" />
-            <element signature="e#3854#6239#0" expanded="false" />
-            <element signature="e#6267#9485#0" expanded="false" />
-            <element signature="e#12127#14554#0" expanded="false" />
-            <element signature="e#14579#16961#0" expanded="false" />
-            <element signature="e#17021#17825#0" expanded="false" />
-            <element signature="e#18678#19160#0" expanded="false" />
+            <element signature="e#1427#3825#0" expanded="false" />
+            <element signature="e#3853#6236#0" expanded="false" />
+            <element signature="e#9517#12095#0" expanded="false" />
+            <element signature="e#12123#14549#0" expanded="false" />
+            <element signature="e#14574#16955#0" expanded="false" />
+            <element signature="e#17015#17819#0" expanded="false" />
+            <element signature="e#17923#18593#0" expanded="false" />
+            <element signature="e#18672#19154#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -428,17 +474,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_mushroom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="435" column="49" lean-forward="false" selection-start-line="435" selection-start-column="49" selection-end-line="435" selection-end-column="49" />
+        <state relative-caret-position="1260">
+          <caret line="196" column="51" lean-forward="true" selection-start-line="196" selection-start-column="51" selection-end-line="196" selection-end-column="51" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#908#1227#0" expanded="false" />
-            <element signature="e#3854#6239#0" expanded="false" />
-            <element signature="e#6267#9485#0" expanded="false" />
-            <element signature="e#12127#14554#0" expanded="false" />
-            <element signature="e#14579#16961#0" expanded="false" />
-            <element signature="e#17021#17825#0" expanded="false" />
-            <element signature="e#18678#19160#0" expanded="false" />
+            <element signature="e#1427#3825#0" expanded="false" />
+            <element signature="e#3853#6236#0" expanded="false" />
+            <element signature="e#9517#12095#0" expanded="false" />
+            <element signature="e#12123#14549#0" expanded="false" />
+            <element signature="e#14574#16955#0" expanded="false" />
+            <element signature="e#17015#17819#0" expanded="false" />
+            <element signature="e#17923#18593#0" expanded="false" />
+            <element signature="e#18672#19154#0" expanded="false" />
           </folding>
         </state>
       </provider>
