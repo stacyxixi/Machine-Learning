@@ -172,9 +172,9 @@ def tune_SVM_2(X, y):
     #plot learning curve
     optimal_gamma = grid.best_params_['gamma']
     optimal_c = grid.best_params_['C']
-    train_sizes = np.linspace(.1, 1.0, 10)
+    train_sizes = np.linspace(.1, 1.0, 5)
 
-    train_sizes, train_scores_lc, cv_scores_lc = learning_curve(SVC(gamma=optimal_gamma, C=optimal_c), X, y, cv=folds,
+    train_sizes, train_scores_lc, cv_scores_lc = learning_curve(SVC(gamma=optimal_gamma, C=optimal_c), X, y, cv=cv_s,
                                                                 n_jobs=4, scoring='f1', train_sizes=train_sizes)
     train_scores_mean_lc = np.mean(train_scores_lc, axis=1)
     train_scores_std_lc = np.std(train_scores_lc, axis=1)
@@ -300,7 +300,7 @@ def tune_boost(X_train ,y_train):
 
     train_sizes, train_scores_lc, cv_scores_lc = learning_curve(
         AdaBoostClassifier(base_estimator=base, n_estimators=optimal_n_estimators, learning_rate=optimal_lr),
-        X, y, cv=folds,n_jobs=1, scoring='f1', train_sizes=train_sizes)
+        X, y, cv=cv_s, n_jobs=4, scoring='f1', train_sizes=train_sizes)
     train_scores_mean_lc = np.mean(train_scores_lc, axis=1)
     train_scores_std_lc = np.std(train_scores_lc, axis=1)
     cv_scores_mean_lc = np.mean(cv_scores_lc, axis=1)
@@ -431,8 +431,8 @@ if __name__ == '__main__':
     print float(pos_count)/y_train.shape[0]
     """
     #para_kNN = tune_kNN(X_train, y_train)
-    para_linear_SVM = tune_SVM_1(X_train, y_train)
-    #para_RBF_SVM = tune_SVM_2(X_train, y_train)
+    #para_linear_SVM = tune_SVM_1(X_train, y_train)
+    para_RBF_SVM = tune_SVM_2(X_train, y_train)
     #print para_RBF_SVM
     #para_tree = tune_decisionTree(X_train, y_train)
     #para_boost = tune_boost(X_train ,y_train)

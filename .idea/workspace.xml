@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f2b9682-a771-4a3e-9def-571477c9f104" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/MidpointNormalize.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/analyze_data.py" afterPath="$PROJECT_DIR$/analyze_data.py" />
-      <change beforePath="$PROJECT_DIR$/exported figures/Learning Curve with k-nearest neighbors (k=3).png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exported figures/Validation Curve with k-nearest neighbors.png" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,17 +16,17 @@
       <file leaf-file-name="analyze_data.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analyze_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="576">
               <caret line="148" column="21" lean-forward="false" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#1091#1197#0" expanded="false" />
                 <element signature="e#1224#3605#0" expanded="false" />
-                <element signature="e#6038#9261#0" expanded="false" />
-                <element signature="e#9296#11816#0" expanded="false" />
-                <element signature="e#11856#14255#0" expanded="false" />
-                <element signature="e#16694#17500#0" expanded="false" />
-                <element signature="e#17605#18261#0" expanded="false" />
+                <element signature="e#6038#9259#0" expanded="false" />
+                <element signature="e#9294#11814#0" expanded="false" />
+                <element signature="e#11854#14253#0" expanded="false" />
+                <element signature="e#16692#17498#0" expanded="false" />
+                <element signature="e#17603#18259#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -172,12 +168,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3232" height="1732" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -209,11 +204,11 @@
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#1091#1197#0" expanded="false" />
             <element signature="e#1224#3605#0" expanded="false" />
-            <element signature="e#6038#9261#0" expanded="false" />
-            <element signature="e#9296#11816#0" expanded="false" />
-            <element signature="e#11856#14255#0" expanded="false" />
-            <element signature="e#16694#17500#0" expanded="false" />
-            <element signature="e#17605#18261#0" expanded="false" />
+            <element signature="e#6038#9259#0" expanded="false" />
+            <element signature="e#9294#11814#0" expanded="false" />
+            <element signature="e#11854#14253#0" expanded="false" />
+            <element signature="e#16692#17498#0" expanded="false" />
+            <element signature="e#17603#18259#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -230,17 +225,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
+        <state relative-caret-position="576">
           <caret line="148" column="21" lean-forward="false" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#1091#1197#0" expanded="false" />
             <element signature="e#1224#3605#0" expanded="false" />
-            <element signature="e#6038#9261#0" expanded="false" />
-            <element signature="e#9296#11816#0" expanded="false" />
-            <element signature="e#11856#14255#0" expanded="false" />
-            <element signature="e#16694#17500#0" expanded="false" />
-            <element signature="e#17605#18261#0" expanded="false" />
+            <element signature="e#6038#9259#0" expanded="false" />
+            <element signature="e#9294#11814#0" expanded="false" />
+            <element signature="e#11854#14253#0" expanded="false" />
+            <element signature="e#16692#17498#0" expanded="false" />
+            <element signature="e#17603#18259#0" expanded="false" />
           </folding>
         </state>
       </provider>
