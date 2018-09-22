@@ -4,6 +4,9 @@ import numpy as np
 # import MidpointNormalize
 
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import LabelBinarizer
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import validation_curve
@@ -36,6 +39,7 @@ class MidpointNormalize(Normalize):
 def preprocessing_data(filename):
     data = pd.read_csv(filename)
     X = data.drop('category', axis=1)
+    X = X.drop('V11', axis=1)
     y = data.category
     return X, y
 
@@ -381,7 +385,7 @@ def plot_heatmap(scores, x_range, y_range, **kwargs):
     plt.yticks(np.arange(len(y_range)), y_range)
     plt.title(kwargs['title'])
     figure_name = kwargs['title'] + '.png'
-    plt.savefig(os.path.join('exported figures/HTRU_2', figure_name), dpi=72)
+    plt.savefig(os.path.join('exported figures/mushroom', figure_name), dpi=72)
     plt.show()
 
 def plot_curve(x_data, train_score_mean, train_score_std, cv_score_mean, cv_score_std, **kwargs):
@@ -399,7 +403,7 @@ def plot_curve(x_data, train_score_mean, train_score_std, cv_score_mean, cv_scor
 
     plt.legend(loc='upper left')
     figure_name = kwargs['title'] + '.png'
-    plt.savefig(os.path.join('exported figures/HTRU_2', figure_name), dpi=72)
+    plt.savefig(os.path.join('exported figures/mushroom', figure_name), dpi=72)
     plt.show()
 
 def evaluate_classifiers(classifiers, X_train, y_train, X_test, y_test):
@@ -413,29 +417,20 @@ def evaluate_classifiers(classifiers, X_train, y_train, X_test, y_test):
         print(clf)
         print 'TEST: roc_auc_score: %.5f, accuracy: %.5f, F-score: %.5f. ' % (score_auc, score_accuracy, score_f1)
 
-
 if __name__ == '__main__':
     dataset2 = "agaricus-lepiota.csv"
     X, y = preprocessing_data(dataset2)
-    #scaler = StandardScaler()
-    #scaler.fit(X)
-    #X_scaled = scaler.transform(X)
+    #print X.shape
+    X_onehot = pd.get_dummies(X)
+    #print X.shape
+    #print y.shape
+    #print y.head(10)
+    y_binary = LabelBinarizer().fit_transform(y).reshape(len(y))
+    #print y.shape
 
-    # print (scaler.mean_)
-    # print X.values[0:1, :]
-    # print X_scaled[0:1, :]
+    X_train, X_test, y_train, y_test = train_test_split(X_onehot, y_binary, test_size=0.3, random_state=0)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
-
-    """
-    print X_train.shape, X_test.shape
-    pos_count = 0
-    for i in y_train:
-        if i == 1:
-            pos_count += 1
-    print float(pos_count)/y_train.shape[0]
-    """
-    # para_kNN = tune_kNN(X_train, y_train)
+    #para_kNN = tune_kNN(X_train, y_train)
     # para_linear_SVM = tune_SVM_1(X_train, y_train)
     # para_RBF_SVM = tune_SVM_2(X_train, y_train)
     # print para_RBF_SVM

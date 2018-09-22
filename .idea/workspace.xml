@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f2b9682-a771-4a3e-9def-571477c9f104" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/analyze_mushroom.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/HTRU_2.xlsx" afterPath="$PROJECT_DIR$/HTRU_2.xlsx" />
-      <change beforePath="$PROJECT_DIR$/analyze_data.py" afterPath="$PROJECT_DIR$/analyze_data_pulsar.py" />
-      <change beforePath="$PROJECT_DIR$/exported figures/HTRU_2/Cross Validation f1 score with Adaboosting.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exported figures/HTRU_2/Learning Curve with Adaboosting(201 of estimators, 0.050 learning rate).png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/MidpointNormalize.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/agaricus-lepiota.csv" afterPath="$PROJECT_DIR$/agaricus-lepiota.csv" />
+      <change beforePath="$PROJECT_DIR$/analyze_mushroom.py" afterPath="$PROJECT_DIR$/analyze_mushroom.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,11 +19,10 @@
       <file leaf-file-name="analyze_data_pulsar.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyze_data_pulsar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-88">
-              <caret line="437" column="26" lean-forward="true" selection-start-line="437" selection-start-column="26" selection-end-line="437" selection-end-column="26" />
+            <state relative-caret-position="368">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#1122#1228#0" expanded="false" />
                 <element signature="e#1255#3636#0" expanded="false" />
                 <element signature="e#3664#6041#0" expanded="false" />
                 <element signature="e#6069#9282#0" expanded="false" />
@@ -41,21 +38,18 @@
       <file leaf-file-name="analyze_mushroom.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analyze_mushroom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="33" column="57" lean-forward="false" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+            <state relative-caret-position="545">
+              <caret line="436" column="4" lean-forward="false" selection-start-line="436" selection-start-column="4" selection-end-line="436" selection-end-column="4" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#764#1083#0" expanded="false" />
-                <element signature="e#1123#1227#0" expanded="false" />
-                <element signature="e#1253#3641#0" expanded="false" />
-                <element signature="e#3669#6042#0" expanded="false" />
-                <element signature="e#6070#9270#0" expanded="false" />
-                <element signature="e#9305#11873#0" expanded="false" />
-                <element signature="e#11901#14308#0" expanded="false" />
-                <element signature="e#14333#16695#0" expanded="false" />
-                <element signature="e#16755#17557#0" expanded="false" />
-                <element signature="e#17661#18327#0" expanded="false" />
-                <element signature="e#18406#18888#0" expanded="false" />
+                <element signature="e#908#1227#0" expanded="false" />
+                <element signature="e#1427#3815#0" expanded="false" />
+                <element signature="e#3843#6216#0" expanded="false" />
+                <element signature="e#6244#9444#0" expanded="false" />
+                <element signature="e#12075#14482#0" expanded="false" />
+                <element signature="e#14507#16869#0" expanded="false" />
+                <element signature="e#16929#17733#0" expanded="false" />
+                <element signature="e#18584#19066#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -70,6 +64,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>htru_</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -78,6 +77,7 @@
       <list>
         <option value="$PROJECT_DIR$/MidpointNormalize.py" />
         <option value="$PROJECT_DIR$/analyze_data.py" />
+        <option value="$PROJECT_DIR$/analyze_data_pulsar.py" />
         <option value="$PROJECT_DIR$/analyze_mushroom.py" />
       </list>
     </option>
@@ -120,8 +120,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,6 +136,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -155,8 +155,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="analyze_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.analyze_mushroom">
+    <configuration name="analyze_data" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -174,9 +174,51 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="analyze_data_pulsar" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CS7460Assignment1" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyze_data_pulsar.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="analyze_mushroom" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CS7460Assignment1" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyze_mushroom.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Python.analyze_data" />
+      <item index="1" class="java.lang.String" itemvalue="Python.analyze_data_pulsar" />
+      <item index="2" class="java.lang.String" itemvalue="Python.analyze_mushroom" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.analyze_data" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.analyze_mushroom" />
+        <item index="1" class="java.lang.String" itemvalue="Python.analyze_data_pulsar" />
       </list>
     </recent_temporary>
   </component>
@@ -198,18 +240,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3232" height="1732" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -229,11 +270,45 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/analyze_data_pulsar.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5080">
+          <caret line="437" column="26" lean-forward="true" selection-start-line="437" selection-start-column="26" selection-end-line="437" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#1255#3636#0" expanded="false" />
+            <element signature="e#3664#6041#0" expanded="false" />
+            <element signature="e#6069#9282#0" expanded="false" />
+            <element signature="e#9317#11837#0" expanded="false" />
+            <element signature="e#14296#16654#0" expanded="false" />
+            <element signature="e#16715#17521#0" expanded="false" />
+            <element signature="e#17626#18282#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyze_mushroom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2120">
+          <caret line="417" column="39" lean-forward="true" selection-start-line="417" selection-start-column="39" selection-end-line="417" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#908#1227#0" expanded="false" />
+            <element signature="e#1427#3815#0" expanded="false" />
+            <element signature="e#3843#6216#0" expanded="false" />
+            <element signature="e#6244#9444#0" expanded="false" />
+            <element signature="e#12075#14482#0" expanded="false" />
+            <element signature="e#14507#16869#0" expanded="false" />
+            <element signature="e#16929#17733#0" expanded="false" />
+            <element signature="e#18584#19066#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyze_data_pulsar.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1122#1228#0" expanded="false" />
             <element signature="e#1255#3636#0" expanded="false" />
             <element signature="e#3664#6041#0" expanded="false" />
             <element signature="e#6069#9282#0" expanded="false" />
@@ -251,7 +326,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1122#1228#0" expanded="false" />
             <element signature="e#1255#3636#0" expanded="false" />
             <element signature="e#3664#6041#0" expanded="false" />
             <element signature="e#6069#9282#0" expanded="false" />
@@ -269,7 +343,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1122#1228#0" expanded="false" />
             <element signature="e#1255#3636#0" expanded="false" />
             <element signature="e#3664#6041#0" expanded="false" />
             <element signature="e#6069#9282#0" expanded="false" />
@@ -287,7 +360,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1122#1228#0" expanded="false" />
             <element signature="e#1255#3636#0" expanded="false" />
             <element signature="e#3664#6041#0" expanded="false" />
             <element signature="e#6069#9282#0" expanded="false" />
@@ -308,11 +380,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_data_pulsar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="437" column="26" lean-forward="true" selection-start-line="437" selection-start-column="26" selection-end-line="437" selection-end-column="26" />
+        <state relative-caret-position="368">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1122#1228#0" expanded="false" />
             <element signature="e#1255#3636#0" expanded="false" />
             <element signature="e#3664#6041#0" expanded="false" />
             <element signature="e#6069#9282#0" expanded="false" />
@@ -326,21 +397,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_mushroom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="33" column="57" lean-forward="false" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+        <state relative-caret-position="545">
+          <caret line="436" column="4" lean-forward="false" selection-start-line="436" selection-start-column="4" selection-end-line="436" selection-end-column="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#764#1083#0" expanded="false" />
-            <element signature="e#1123#1227#0" expanded="false" />
-            <element signature="e#1253#3641#0" expanded="false" />
-            <element signature="e#3669#6042#0" expanded="false" />
-            <element signature="e#6070#9270#0" expanded="false" />
-            <element signature="e#9305#11873#0" expanded="false" />
-            <element signature="e#11901#14308#0" expanded="false" />
-            <element signature="e#14333#16695#0" expanded="false" />
-            <element signature="e#16755#17557#0" expanded="false" />
-            <element signature="e#17661#18327#0" expanded="false" />
-            <element signature="e#18406#18888#0" expanded="false" />
+            <element signature="e#908#1227#0" expanded="false" />
+            <element signature="e#1427#3815#0" expanded="false" />
+            <element signature="e#3843#6216#0" expanded="false" />
+            <element signature="e#6244#9444#0" expanded="false" />
+            <element signature="e#12075#14482#0" expanded="false" />
+            <element signature="e#14507#16869#0" expanded="false" />
+            <element signature="e#16929#17733#0" expanded="false" />
+            <element signature="e#18584#19066#0" expanded="false" />
           </folding>
         </state>
       </provider>
