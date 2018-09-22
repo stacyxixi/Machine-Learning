@@ -17,6 +17,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.neural_network import MLPClassifier
 
+from sklearn.metrics import *
+
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
 
@@ -153,7 +155,7 @@ def tune_SVM_2(X, y):
     cv_s = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=42)
 
     #c_range = [0.001,0.01, 0.1, 1, 10, 100, 1000]
-    c_range = [1e-1, 1e0, 1e1, 1e2, 1e3, 1e4, 1e5]
+    c_range = [1e-1, 1e0, 1e1, 1e2, 1e3, 1e4]
     gamma_range = np.logspace(-5, 1, 7)
     print gamma_range
 
@@ -188,7 +190,7 @@ def tune_SVM_2(X, y):
     # print train_scores_mean_lc, cv_scores_mean_lc
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
-               title='Learning Curve with SVM (RBF, gamme = %8.2f, c=%8.2f)' % (optimal_gamma, optimal_c),
+               title='Learning Curve with SVM (RBF, gamma= %.2f, c=%.2f)' % (optimal_gamma, optimal_c),
                x_label='number of samples', x_lim=(0, 12000), y_lim=(0.75, 1.05))
 
     return {'gamma':optimal_gamma, 'C': optimal_c}
@@ -269,19 +271,19 @@ def tune_decisionTree(X,y):
 
     return {'max_depth': optimal_max_depth}
 
-def tune_boost(X_train ,y_train):
+def tune_boost(X ,y):
     print '-------------------------hyperparameter tuning for Adaboosting-------------------------'
 
     folds = 5
-    cv_s = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=42)
+    cv_s = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=0)
 
-    n_estimators_range = range(1, 302, 50)
-    rate_range = [0.01, 0.05, 0.1, 0.5, 1.0, 2.0]
+    n_estimators_range = range(1, 402, 50)
+    rate_range = [0.001, 0.01, 0.05, 0.1, 0.5, 1.0, 2.0]
     print n_estimators_range
     print rate_range
 
     param_grid = dict(n_estimators=n_estimators_range, learning_rate=rate_range)
-    base = DecisionTreeClassifier(max_depth=5)
+    base = DecisionTreeClassifier(max_depth=3)
     grid = GridSearchCV(AdaBoostClassifier(base_estimator=base), param_grid=param_grid, cv=cv_s, scoring='f1',n_jobs=4)
     grid.fit(X, y)
 
@@ -296,7 +298,7 @@ def tune_boost(X_train ,y_train):
     # plot learning curve
     optimal_n_estimators = grid.best_params_['n_estimators']
     optimal_lr = grid.best_params_['learning_rate']
-    train_sizes = np.linspace(.1, 1.0, 5)
+    train_sizes = np.linspace(.1, 1.0, 10)
 
     train_sizes, train_scores_lc, cv_scores_lc = learning_curve(
         AdaBoostClassifier(base_estimator=base, n_estimators=optimal_n_estimators, learning_rate=optimal_lr),
@@ -325,14 +327,14 @@ def tune_NN(X,y):
     folds = 5
     cv_s = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=42)
 
-    hidden_layer_sizes_range = [(10,)]
-    alpha_range = [1e-5, 1e-4, 1e-3]
+    hidden_layer_sizes_range = [(5,), (50,), (100,), (150,), (200,)]
+    n_hidden_units = [5,50,100,150,200]
+    alpha_range = [1e-5, 1e-4, 1e-3, 1e-2, 1e-1]
     print hidden_layer_sizes_range
     print alpha_range
 
     param_grid = dict(hidden_layer_sizes=hidden_layer_sizes_range, alpha=alpha_range)
-    base = DecisionTreeClassifier(max_depth=5)
-    grid = GridSearchCV(MLPClassifier(), param_grid=param_grid, cv=cv_s, scoring='f1')
+    grid = GridSearchCV(MLPClassifier(), param_grid=param_grid, cv=cv_s, scoring='f1', n_jobs=4)
     grid.fit(X, y)
 
     scores = grid.cv_results_['mean_test_score'].reshape(len(alpha_range), len(hidden_layer_sizes_range))
@@ -340,17 +342,17 @@ def tune_NN(X,y):
     print("The best parameters are %s with a F score of %0.5f" % (grid.best_params_, grid.best_score_))
 
     # Draw heatmap of the cross validation accuracy as a function of gamma and C
-    plot_heatmap(scores, hidden_layer_sizes_range[:][0], alpha_range, vmin=0.5, mid=0.85, xlabel='n_hidden_units',
+    plot_heatmap(scores, n_hidden_units, alpha_range, vmin=0.75, mid=0.86, xlabel='n_hidden_units',
                  ylabel='alpha', title='Cross Validation f1 score with Neuron Network')
 
     # plot learning curve
-    optimal_hls = grid.best_params_['hidden_layer_sizes'][:][0]
+    optimal_hls = grid.best_params_['hidden_layer_sizes']
     optimal_alpha = grid.best_params_['alpha']
     train_sizes = np.linspace(.1, 1.0, 10)
 
     train_sizes, train_scores_lc, cv_scores_lc = learning_curve(
         MLPClassifier(hidden_layer_sizes=optimal_hls, alpha=optimal_alpha),
-        X, y, cv=folds, n_jobs=1, scoring='f1', train_sizes=train_sizes)
+        X, y, cv=folds, n_jobs=4, scoring='f1', train_sizes=train_sizes)
     train_scores_mean_lc = np.mean(train_scores_lc, axis=1)
     train_scores_std_lc = np.std(train_scores_lc, axis=1)
     cv_scores_mean_lc = np.mean(cv_scores_lc, axis=1)
@@ -363,11 +365,10 @@ def tune_NN(X,y):
     # print train_scores_mean_lc, cv_scores_mean_lc
 
     plot_curve(train_sizes, train_scores_mean_lc, train_scores_std_lc, cv_scores_mean_lc, cv_scores_std_lc,
-               title='Learning Curve with Neural Networl(%d of hidden units and %.3f learning rate' % (
+               title='Learning Curve with Neural Network(%d hidden units and %.5f alpha)' % (
                    optimal_hls[0], optimal_alpha), x_label='number of samples', x_lim=(0, 12000), y_lim=(0.75, 1.05))
 
-    return {'n_estimators': optimal_n_estimators, 'learning_rate': optimal_lr}
-
+    return {'hidden_layer_sizes': optimal_hls, 'alpha': optimal_alpha}
 
 def plot_heatmap(scores, x_range, y_range, **kwargs):
 
@@ -409,6 +410,17 @@ def plot_curve(x_data, train_score_mean, train_score_std, cv_score_mean, cv_scor
 
 
 
+def evaluate_classifiers(classifiers, X_train, y_train, X_test, y_test):
+    for clf in classifiers:
+        clf.fit(X_train, y_train)
+        y_pred = clf.predict(X_test)
+        score_auc = roc_auc_score(y_test, y_pred)
+        score_accuracy = accuracy_score(y_test, y_pred)
+        score_f1 = f1_score(y_test, y_pred)
+        print "---------------------------------------------------------------------------------------"
+        print(clf)
+        print 'TEST: roc_auc_score: %.5f, accuracy: %.5f, F-score: %.5f. '%(score_auc, score_accuracy, score_f1)
+
 if __name__ == '__main__':
     dataset1 = "HTRU_2.csv"
     X, y = preprocessing_data(dataset1)
@@ -432,11 +444,26 @@ if __name__ == '__main__':
     """
     #para_kNN = tune_kNN(X_train, y_train)
     #para_linear_SVM = tune_SVM_1(X_train, y_train)
-    para_RBF_SVM = tune_SVM_2(X_train, y_train)
+    #para_RBF_SVM = tune_SVM_2(X_train, y_train)
     #print para_RBF_SVM
     #para_tree = tune_decisionTree(X_train, y_train)
     #para_boost = tune_boost(X_train ,y_train)
     #para_NN = tune_NN(X_train, y_train)
+
+    classifiers = [
+        KNeighborsClassifier(n_neighbors=5),
+        SVC(kernel='linear', C=100),
+        SVC(C=100, gamma=0.01),
+        DecisionTreeClassifier(max_features='auto', max_depth=5),
+        MLPClassifier(alpha=0.001, hidden_layer_sizes = (100,)),
+        AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=3),learning_rate=0.05, n_estimators=200)
+    ]
+
+    evaluate_classifiers(classifiers, X_train, y_train, X_test, y_test)
+
+
+
+
 
 
 
