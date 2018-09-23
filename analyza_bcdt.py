@@ -451,7 +451,7 @@ if __name__ == '__main__':
         DecisionTreeClassifier(max_features='auto', max_depth=5),
         SVC(kernel='linear', C=1),
         SVC(C=100.0, gamma=0.001),
-        MLPClassifier(alpha=0.01, hidden_layer_sizes=(300,)),
+        MLPClassifier(alpha=0.01, hidden_layer_sizes=(300,), activation = 'logistic'),
         AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=1), learning_rate=0.05, n_estimators=200)
     ]
 
